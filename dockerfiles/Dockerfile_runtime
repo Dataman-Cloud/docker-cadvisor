@@ -2,10 +2,8 @@ FROM demoregistry.dataman-inc.com/library/google-cadvisor:0.25.0
 MAINTAINER pro zpang@dataman-inc.com
 
 # time 
-ENV TIME_ZONE Asiz/Shanghai
-RUN echo "${TIME_ZONE}" > /etc/timezone  
 RUN apk add --update tzdata && rm -rf /var/cache/apk/*
-RUN ln -sf /usr/share/zoneinfo/${TIME_ZONE} /etc/localtime
+RUN cp /usr/share/zoneinfo/Hongkong /etc/localtime
 
 # add gnu find 
 RUN apk add --update findutils && rm -rf /var/cache/apk/*
