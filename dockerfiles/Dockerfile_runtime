@@ -1,9 +1,11 @@
-FROM demoregistry.dataman-inc.com/library/centos7-base:20160907193907 
+FROM demoregistry.dataman-inc.com/library/google-cadvisor:0.25.0
 MAINTAINER pro zpang@dataman-inc.com
 
-ENV CADVISOR_VERSION="v0.25.0"
+# time 
+ENV TIME_ZONE Asiz/Shanghai
+RUN echo "${TIME_ZONE}" > /etc/timezone  
+RUN apk add --update tzdata && rm -rf /var/cache/apk/*
+RUN ln -sf /usr/share/zoneinfo/${TIME_ZONE} /etc/localtime
 
-RUN wget -O /cadvisor https://github.com/google/cadvisor/releases/download/$CADVISOR_VERSION/cadvisor && \
-    chmod 755 /cadvisor 
-
-ENTRYPOINT ["/cadvisor"]
+# add gnu find 
+RUN apk add --update findutils && rm -rf /var/cache/apk/*
