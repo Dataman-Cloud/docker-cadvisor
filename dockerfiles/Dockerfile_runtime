@@ -1,4 +1,4 @@
-FROM demoregistry.dataman-inc.com/library/google-cadvisor:v0.26.0
+FROM demoregistry.dataman-inc.com/library/google-cadvisor:v0.26.1 
 MAINTAINER pro zpang@dataman-inc.com
 
 # time 
